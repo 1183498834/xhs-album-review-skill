@@ -1,0 +1,14 @@
+{
+  "tracks": [
+    {"n": 1, "title": "Dove", "duration": "4:05"},
+    {"n": 2, "title": "Eyes seeing eyes", "duration": "5:56"},
+    {"n": 3, "title": "Sun, astray", "duration": "5:19"},
+    {"n": 4, "title": "Moon, astray", "duration": "3:41"},
+    {"n": 5, "title": "Thousand horns", "duration": "6:42"},
+    {"n": 6, "title": "Sapphire", "duration": "1:48"},
+    {"n": 7, "title": "Ruby", "duration": "1:33"},
+    {"n": 8, "title": "Diamond morning", "duration": "5:19"},
+    {"n": 9, "title": "Diamond art", "duration": "1:21"},
+    {"n": 10, "title": "Diamond train", "duration": "7:57"}
+  ]
+}
