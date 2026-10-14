@@ -1,4 +1,4 @@
-# Step 4 — Upload to Xiaohongshu draft box
+# Step 4 — Upload to Rednote draft box
 
 ## Browser backend selection (read first)
 
@@ -16,13 +16,13 @@ Decision rules:
 2. **If the user mentions their logged-in browser** ("我 Chrome 已经登录了小红书", "用我 Edge 里的账号"), prefer the `browser-skill` bsk CLI path. It reuses the existing login session and avoids a fresh QR handoff. If `bsk` is not installed or the daemon is not connected, fall back to `plane="cu"` and ask the user to scan the QR once in that browser.
 3. **If the user names a specific browser brand** without mentioning login state, use `plane="cu"` and launch that brand explicitly. Do not silently substitute the built-in browser.
 4. **Never mix backends mid-flow.** Once you choose `bu`, `cu`, or `bsk`, stay on it for the whole Step 4. Switching backends loses tab focus and pending uploads.
-5. The Xiaohongshu-specific quirks below (React title input, tiptap editor, hidden file input, topic picker) are DOM-level and apply to all three backends. Only the invocation syntax changes.
+5. The Rednote-specific quirks below (React title input, tiptap editor, hidden file input, topic picker) are DOM-level and apply to all three backends. Only the invocation syntax changes.
 
 ## Filling the publisher (DOM-level steps, same on all backends)
 
 The publisher is a React app with a tiptap editor. Naive `type()` calls get wiped on blur.
 
-1. Switch to the existing Xiaohongshu tab (or open `https://creator.xiaohongshu.com/publish/publish`).
+1. Switch to the existing Rednote tab (or open `https://creator.xiaohongshu.com/publish/publish`).
 
 2. Click the **"上传图文"** tab (not the default "上传视频" tab).
 
@@ -57,7 +57,7 @@ document.execCommand('insertText', false, 'THE BODY WITHOUT HASHTAGS');
 
 6. **Insert hashtags via the topic picker, never as plain text.**
 
-Pasting `#metal #djent` as literal characters into the body produces plain black text that does NOT link anywhere. Xiaohongshu only renders a clickable topic chip when the tag is created through the in-editor topic flow. To insert each tag:
+Pasting `#metal #djent` as literal characters into the body produces plain black text that does NOT link anywhere. Rednote only renders a clickable topic chip when the tag is created through the in-editor topic flow. To insert each tag:
 
    - Place the caret at the very end of the body text (on the same line, not after a newline).
    - Type a single space, then type `#`. A topic-suggestion dropdown appears after ~400 ms.

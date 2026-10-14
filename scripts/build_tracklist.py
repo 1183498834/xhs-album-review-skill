@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a 1080x1440 tracklist card for Xiaohongshu notes.
+"""Build a 1080x1440 tracklist card for Rednote notes.
 
 Usage:
     python build_tracklist.py \
