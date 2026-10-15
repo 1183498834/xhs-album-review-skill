@@ -1,7 +1,7 @@
 ---
 name: xhs-album-review
 
-description: End-to-end workflow for publishing a music album review note to Rednote (小红书). Use when the user wants to (1) research an album/band via Apple Music/iTunes + web search, (2) assemble 3 images (official cover, band photo, auto-generated tracklist card), (3) write a structured review, and (4) save the note to the Rednote creator studio. By default the note ends up in the draft box; the final "发布" button is clicked only when the user explicitly says "直接发布不需要经过人工同意". Covers album metadata lookup, cover art download, tracklist image generation, and the browser-automation quirks of the Rednote publisher (React-controlled inputs, tiptap editor, draft-box save flow).
+description: End-to-end workflow for publishing a music album review note to Rednote (小红书). Use when the user wants to (1) research an album/band via Apple Music/iTunes + web search, (2) assemble 3 images (official cover, band photo, theme-aware tracklist card), (3) write a human-sounding, structurally differentiated review (variable skeleton + de-AI/human-touch pass so it is not flagged as AI or template content), and (4) save the note to the Rednote creator studio. By default the note ends up in the draft box; the final "发布" button is clicked only when the user explicitly says "直接发布不需要经过人工同意". Covers album metadata lookup, cover art download, tracklist image generation, and the browser-automation quirks of the Rednote publisher (React-controlled inputs, tiptap editor, draft-box save flow).
 
 ---
 
@@ -23,8 +23,8 @@ At the start of a run, create one working folder per album: `<project-root>/<art
 | Step | What happens | Read this module |
 | --- | --- | --- |
 | 1 | Resolve album on Apple Music, pull tracklist via iTunes Lookup API, download cover, gather band facts/genre/similar artists, find band photo. | `modules/01-collect-album-info.md` |
-| 2 | Assemble the 3 images: official cover, band press photo, generated tracklist card. | `modules/02-build-images.md` |
-| 3 | Write the review using the fixed template. If the user supplied notes, expand them. Then run the de-AI pass. **Save review.md to the working folder before touching the browser.** | `modules/03-write-review.md` + `modules/deai-rules.md` |
+| 2 | Assemble the 3 images: official cover, band press photo, theme-aware tracklist card (layout/colors vary per album — never reuse the exact same card design). | `modules/02-build-images.md` |
+| 3 | Write the review using a **variable skeleton** (rotate variants A/B/C so consecutive notes never share the same structure — Rednote flags repeated note skeletons as 模板化). If the user supplied notes, expand them. Then run the de-AI + human-touch pass (Chinese AI-pattern check, structure differentiation, density check, compliance red lines). **Save review.md to the working folder before touching the browser.** | `modules/03-write-review.md` + `modules/deai-rules.md` |
 | 4 | Open the Rednote creator studio, upload the 3 images from the working folder, fill title and body, insert topic chips via the topic picker. Save to draft by default; publish directly only on the "直接发布不需要经过人工同意" command. | `modules/04-upload-draft.md` |
 | 5 | Confirm the draft landed and report the working folder path, image paths, and save time to the user. | `modules/05-verify.md` |
 
@@ -45,8 +45,8 @@ xhs-album-review-skill/
 ├── modules/
 │   ├── 01-collect-album-info.md       # Step 1
 │   ├── 02-build-images.md            # Step 2
-│   ├── 03-write-review.md             # Step 3
-│   ├── deai-rules.md                  # de-AI checklist referenced by Step 3
+│   ├── 03-write-review.md             # Step 3: variable skeleton A/B/C + title rules + density check
+│   ├── deai-rules.md                  # de-AI + human-touch: Chinese AI patterns, structure differentiation, compliance red lines
 │   ├── 04-upload-draft.md             # Step 4
 │   ├── 05-verify.md                   # Step 5
 │   └── safety-and-pitfalls.md        # safety red lines + known pitfalls

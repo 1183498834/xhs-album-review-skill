@@ -20,8 +20,8 @@
 | 步骤 | 做什么 | 读哪个文件 |
 | --- | --- | --- |
 | 1 | 在 Apple Music 找到专辑，用 iTunes Lookup API 拉完整曲目，下载封面，收集乐队资料/Genre/相似乐队，找乐队合影。 | `modules/01-collect-album-info.md` |
-| 2 | 拼出 3 张图：官方封面、乐队宣传照、自制曲目卡片。 | `modules/02-build-images.md` |
-| 3 | 按固定模板写乐评。用户给了原稿就扩展，写完过一遍去 AI 味规则。**动浏览器之前先把 review.md 存到工作文件夹。** | `modules/03-write-review.md` + `modules/deai-rules.md` |
+| 2 | 拼出 3 张图：官方封面、乐队宣传照、自制曲目卡片（卡片配色/版式随专辑变化，严禁连续两篇用同一版式）。 | `modules/02-build-images.md` |
+| 3 | 用**可变骨架**写乐评（A/B/C 三种结构轮换，连续笔记不得重复同一结构——小红书会把固定模板结构判为同质化）。用户给了原稿就扩展，写完过一遍去 AI 味 + 真人化规则（中文 AI 句式检查、结构差异化、信息密度检查、合规红线）。**动浏览器之前先把 review.md 存到工作文件夹。** | `modules/03-write-review.md` + `modules/deai-rules.md` |
 | 4 | 打开小红书创作者中心，从工作文件夹传 3 张图，填标题正文，通过话题选择器插入话题胶囊。默认存草稿；只有用户明确说"直接发布不需要经过人工同意"才点发布。 | `modules/04-upload-draft.md` |
 | 5 | 确认草稿存好了，把工作文件夹路径、图片路径和保存时间报给用户。 | `modules/05-verify.md` |
 
@@ -41,8 +41,8 @@ xhs-album-review-skill/
 ├── modules/
 │   ├── 01-collect-album-info.md      # 步骤 1
 │   ├── 02-build-images.md            # 步骤 2
-│   ├── 03-write-review.md             # 步骤 3
-│   ├── deai-rules.md                 # 去 AI 味规则（步骤 3 引用）
+│   ├── 03-write-review.md             # 步骤 3：可变骨架 A/B/C + 标题规则 + 信息密度检查
+│   ├── deai-rules.md                 # 去 AI 味 + 真人化：中文 AI 句式、结构差异化、合规红线
 │   ├── 04-upload-draft.md            # 步骤 4
 │   ├── 05-verify.md                   # 步骤 5
 │   └── safety-and-pitfalls.md        # 安全红线 + 踩坑

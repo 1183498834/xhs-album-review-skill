@@ -18,8 +18,8 @@ Give the skill an artist and album (e.g. `Karmanjakah - Diamond Morning`). It:
 2. **Downloads cover art** at 1200×1200 from Apple's CDN.
 3. **Gathers band facts** — city, lineup, genre tags, similar bands — via web search.
 4. **Finds a band press photo** via image search.
-5. **Generates a custom tracklist card** (dark navy, two-column for ≥6 tracks, per-track durations) with Pillow.
-6. **Writes the review** — if you supplied your own notes, it expands them into a full 2–3 paragraph review while preserving your verdict; if not, it writes a first-person listening note from scratch. Then it runs the draft through a built-in de-AI checklist so it doesn't read like a chatbot.
+5. **Generates a custom tracklist card** (1080×1440, theme sampled from the album cover so every card looks different, two-column for ≥6 tracks, per-track durations) with Pillow.
+6. **Writes the review** — if you supplied your own notes, it expands them into a full 2–3 paragraph review while preserving your verdict; if not, it writes a first-person listening note from scratch. The note uses a **variable skeleton** (three rotating structure variants, title styles, openers/closers) so consecutive notes never share the same layout. Every section — including the About the band / Genre / If you like / The record info blocks — is written under anti-slop rules at generation time (no résumé triads, no uniform sentence lengths, no press-release tone, real verified facts only), then the whole draft runs through the built-in **de-AI + human-touch pass** (Chinese AI-pattern list, structure-differentiation check, information-density check, anti-slop structure/punctuation/openers rules, compliance red lines) so it reads like a real person's note and is not flagged as AI or 模板化 content.
 7. **Saves everything locally** to a per-album folder (`review.md`, cover, band photo, tracklist card) *before* touching the browser, so a crash never loses the work.
 8. **Fills the Rednote publisher UI** — title, body, 3 images, clickable topic chips — and saves to the draft box. The red **发布** button is yours to press.
 
@@ -65,16 +65,22 @@ Every run creates a folder on disk:
 
 If the browser upload fails, these files are already on disk. You can re-run the upload or paste the text manually.
 
-## Note body template
+## Note body — variable skeleton, not a fixed template
+
+The old fixed 5-emoji-section template was a template fingerprint: an account posting the same skeleton repeatedly is exactly what Rednote's 同质化 detector scores. The note now rotates between three skeleton variants (band-first with emoji sections / record-first / bare paragraphs), each run picking a variant, title style, opener and closer different from the previous note.
+
+Example variant (band-first):
 
 ```
 🎸 About the band       → city, country, formed year, lineup, self-description
 🎛️ Genre                → genre tags + any scene nickname (e.g. "happy thall")
-🎧 If you like           → 3–5 similar bands
+🎧 If you like           → 3–5 similar bands (omit if no good matches)
 💿 The record            → release date, self-released/label, position in discography
-✍️ The review            → expanded from your notes OR written from scratch, then de-AI checked
+✍️ The review            → expanded from your notes OR written from scratch, then de-AI + human-touch checked
 #hashtags                → 5–8 tags, all on ONE line, inserted via the topic picker
 ```
+
+Variants B and C drop the emoji sections or reorder them; every review also carries a minimum of 3 concrete only-a-listener-could-know details (timestamps, sonic specifics, listening context) to keep information density high.
 
 ## Quick start (tracklist card only)
 
